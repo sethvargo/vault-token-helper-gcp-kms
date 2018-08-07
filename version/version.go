@@ -10,7 +10,7 @@ import "fmt"
 
 const (
 	Name    = "vault-token-helper-gcp-kms"
-	Version = "0.1.0"
+	Version = "0.2.0"
 	URL     = "https://github.com/sethvargo/vault-token-helper-gcp-kms"
 )
 

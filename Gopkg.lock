@@ -4,8 +4,8 @@
 [[projects]]
   name = "cloud.google.com/go"
   packages = ["compute/metadata"]
-  revision = "aad3f485ee528456e0768f20397b4d9dd941e755"
-  version = "v0.25.0"
+  revision = "64a2037ec6be8a4b0c1d1f706ed35b428b989239"
+  version = "v0.26.0"
 
 [[projects]]
   name = "github.com/golang/protobuf"
@@ -32,7 +32,7 @@
     "context",
     "context/ctxhttp"
   ]
-  revision = "f4c29de78a2a91c00474a2e689954305c350adf9"
+  revision = "19491d39cadbd9cd33f26ca22cc89ba4ba38251c"
 
 [[projects]]
   branch = "master"
@@ -55,7 +55,7 @@
     "googleapi",
     "googleapi/internal/uritemplates"
   ]
-  revision = "f6d94689cbd71030af1108ddac733886fcae1d75"
+  revision = "9bdf771af19ab16b6a5084e5d542a7e04cb97004"
 
 [[projects]]
   name = "google.golang.org/appengine"
