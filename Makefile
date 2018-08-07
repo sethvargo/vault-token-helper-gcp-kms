@@ -40,8 +40,8 @@ docker:
 		--tag "sethvargo/${NAME}" \
 		--tag "sethvargo/${NAME}:${VERSION}" \
 		. && \
-	@docker push "sethvargo/${NAME}" && \
-	@docker push "sethvargo/${NAME}:${VERSION}"
+	docker push "sethvargo/${NAME}" && \
+	docker push "sethvargo/${NAME}:${VERSION}"
 .PHONY: docker
 
 # pkg creates a single directory of all the files and signs them with gpg
