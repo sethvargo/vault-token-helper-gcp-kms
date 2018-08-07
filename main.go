@@ -65,7 +65,7 @@ func realMain() error {
 	case "get":
 		fn = handleGet
 	case "erase":
-		fn = handleErase
+		return handleErase()
 	case "version", "-version", "--version", "-v":
 		return handleVersion()
 	default:
