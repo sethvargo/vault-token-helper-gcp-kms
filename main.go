@@ -8,6 +8,7 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"context"
 	"encoding/base64"
 	"fmt"
@@ -125,7 +126,7 @@ func handleGet() error {
 	defer done()
 
 	resp, err := kms.Projects.Locations.KeyRings.CryptoKeys.Decrypt(cryptoKeyID, &cloudkms.DecryptRequest{
-		Ciphertext: base64.StdEncoding.EncodeToString(ciphertext),
+		Ciphertext: string(bytes.TrimSpace(ciphertext)),
 	}).
 		Context(ctx).
 		Fields("plaintext").
@@ -165,12 +166,6 @@ func handleStore() error {
 		return errors.Wrap(err, "failed to encrypt plaintext")
 	}
 
-	// Decode the ciphertext
-	ciphertext, err := base64.StdEncoding.DecodeString(resp.Ciphertext)
-	if err != nil {
-		return errors.Wrap(err, "failed to decode ciphertext")
-	}
-
 	// Write to file
 	f, err := os.OpenFile(tokenPath, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0600)
 	if err != nil {
@@ -178,7 +173,7 @@ func handleStore() error {
 	}
 	defer f.Close()
 
-	if _, err := f.Write(ciphertext); err != nil {
+	if _, err := f.WriteString(resp.Ciphertext); err != nil {
 		return errors.Wrap(err, "failed to write contents to file")
 	}
 
