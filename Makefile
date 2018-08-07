@@ -34,6 +34,16 @@ dev:
 			-ldflags="${LDFLAGS}"
 .PHONY: dev
 
+# docker builds the docker container
+docker:
+	@docker build \
+		--tag "sethvargo/${NAME}" \
+		--tag "sethvargo/${NAME}:${VERSION}" \
+		. && \
+	@docker push "sethvargo/${NAME}" && \
+	@docker push "sethvargo/${NAME}:${VERSION}"
+.PHONY: docker
+
 # pkg creates a single directory of all the files and signs them with gpg
 pkg:
 	@rm -rf "${PROJECT_DIR}/pkg/dist"
